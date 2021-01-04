@@ -1,31 +1,13 @@
 package com.lirins.cn.mapper;
 
+import com.lirins.cn.entity.Brand;
 import com.lirins.cn.entity.Category;
 import com.lirins.cn.entity.CategoryExample;
+import com.lirins.cn.mapper.base.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CategoryMapper {
-    long countByExample(CategoryExample example);
+public interface CategoryMapper extends BaseMapper<Category,Long> {
 
-    int deleteByExample(CategoryExample example);
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Category record);
-
-    int insertSelective(Category record);
-
-    List<Category> selectByExample(CategoryExample example);
-
-    Category selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("record") Category record, @Param("example") CategoryExample example);
-
-    int updateByExample(@Param("record") Category record, @Param("example") CategoryExample example);
-
-    int updateByPrimaryKeySelective(Category record);
-
-    int updateByPrimaryKey(Category record);
 }
