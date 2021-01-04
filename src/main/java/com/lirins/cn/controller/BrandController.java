@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("brand")
-public class BrandController extends BaseController<Brand,Long> {
+public class BrandController extends BaseController<Brand,String> {
 
 }
