@@ -10,5 +10,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("brand")
 public class BrandController extends BaseController<Brand,String> {
 
-
 }
