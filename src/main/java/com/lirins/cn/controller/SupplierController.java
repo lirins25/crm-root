@@ -16,5 +16,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("supplier")
 public class SupplierController extends BaseController<Supplier,Long> {
 
-
 }
