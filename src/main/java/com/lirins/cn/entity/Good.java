@@ -3,11 +3,11 @@ package com.lirins.cn.entity;
 import com.lirins.cn.entity.base.BaseEntity;
 import lombok.Data;
 
+import java.util.Date;
 
 
 @Data
 public class Good extends BaseEntity<Long> {
-
 
     private String goodName;
 
@@ -27,6 +27,6 @@ public class Good extends BaseEntity<Long> {
 
     private String goodGift;
 
-
+    private String goodImg;
 
 }
