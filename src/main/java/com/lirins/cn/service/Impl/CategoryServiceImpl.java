@@ -28,6 +28,7 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category,Long> implemen
     private CategoryMapper mapper;
     @Override
     public List<Category> getTreeData() {
+
         //通过父ID等于0拿到一级List<category>
         //遍历一级拿二级
         //遍历二级拿3级
