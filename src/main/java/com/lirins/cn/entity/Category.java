@@ -4,6 +4,7 @@ import com.lirins.cn.entity.base.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Category extends BaseEntity<Long> {
@@ -13,14 +14,9 @@ public class Category extends BaseEntity<Long> {
 
     private String categoryDesc;
 
-    private String parentId;
+    private Long parentId;
 
-    private Date addTime;
+    private List<Category> children;
 
-    private Long creatorId;
-
-    private Date updateTime;
-
-    private Long updateId;
 
     }

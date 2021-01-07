@@ -4,6 +4,8 @@ import com.lirins.cn.entity.Category;
 import com.lirins.cn.entity.Supplier;
 import com.lirins.cn.service.base.BaseService;
 
+import java.util.List;
+
 /**
  * @version 0.1
  * @ClassName:BrandService
@@ -12,4 +14,5 @@ import com.lirins.cn.service.base.BaseService;
  * @since JDK 1.8
  */
 public interface CategoryService extends BaseService<Category,Long> {
+    List<Category> getTreeData();
 }

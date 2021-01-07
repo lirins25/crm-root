@@ -3,10 +3,13 @@ package com.lirins.cn.service.base.Impl;
 import com.github.pagehelper.PageInfo;
 import com.lirins.cn.mapper.base.BaseMapper;
 import com.lirins.cn.service.base.BaseService;
+import com.lirins.cn.utils.ReflectionUtils;
 import com.lirins.cn.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -41,11 +44,13 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
 
     @Override
     public int updateEntity(T t) {
+        ReflectionUtils.invokeMethod(t,"setData",null,null);
         return baseMapper.updateByPrimaryKey(t);
     }
 
     @Override
     public int addEntity(T t) {
+        ReflectionUtils.invokeMethod(t,"setData",null,null);
         return baseMapper.insert(t);
     }
 

@@ -23,12 +23,5 @@ public class Supplier extends BaseEntity<Long> {
 
     private String supplierBrankCode;
 
-    private Date addTime;
-
-    private Long creatorId;
-
-    private Date updateTime;
-
-    private Long updateId;
 
     }
