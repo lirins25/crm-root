@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.lirins.cn.common.http.AxiosResult;
 import com.lirins.cn.controller.base.BaseController;
 import com.lirins.cn.entity.Brand;
+import com.lirins.cn.service.BrandService;
 import com.lirins.cn.service.base.BaseService;
 import com.lirins.cn.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,39 +16,38 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("brand")
-public class BrandController extends BaseController<Brand,String> {
+public class BrandController extends BaseController<Brand,Long> {
     @Autowired
-    private BaseService<Brand, String> baseService;
+    private BrandService brandService;
 
     @GetMapping
     public AxiosResult<PageVo<Brand>> findPage(@RequestParam(defaultValue = "1") int currentPage
             , @RequestParam(defaultValue = "5") int pageSize) {
         PageHelper.startPage(currentPage, pageSize);
-        PageVo<Brand> page = baseService.findPage();
+        PageVo<Brand> page = brandService.findPage();
         return AxiosResult.success(page);
     }
 
     @GetMapping("{id}")
-    public AxiosResult<Brand> findById(@PathVariable String id) {
-        return AxiosResult.success(baseService.findById(id));
+    public AxiosResult<Brand> findById(@PathVariable Long id) {
+        return AxiosResult.success(brandService.findById(id));
     }
 
     @PostMapping
     public AxiosResult<Void> addEntity(@RequestBody Brand entity) {
-        entity.setId(UUID.randomUUID().toString().replaceAll("-",""));
-        int i = baseService.addEntity(entity);
+        int i = brandService.addEntity(entity);
         return toAxios(i);
     }
 
     @PutMapping
     public AxiosResult<Void> updateEntity(@RequestBody Brand entity) {
-        int i = baseService.updateEntity(entity);
+        int i = brandService.updateEntity(entity);
         return toAxios(i);
     }
 
     @DeleteMapping("{ids}")
-    public AxiosResult<Void> deleteEntity(@PathVariable List<String> ids) {
-        int i = baseService.batchDeleteByIds(ids);
+    public AxiosResult<Void> deleteEntity(@PathVariable List<Long> ids) {
+        int i = brandService.batchDeleteByIds(ids);
         return toAxios(i);
     }
 }

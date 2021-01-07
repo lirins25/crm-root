@@ -6,8 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Brand extends BaseEntity<String> {
-    private String id;
+public class Brand extends BaseEntity<Long> {
 
     private String brandName;
 

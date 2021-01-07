@@ -8,7 +8,6 @@ import java.util.List;
 
 @Data
 public class Category extends BaseEntity<Long> {
-    private Long id;
 
     private String categoryName;
 
