@@ -1,14 +1,7 @@
 package com.lirins.cn.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-
-import java.time.LocalDateTime;
 import java.util.Date;
-/**
- * 赠品转商品的审核表
- */
-@Data
+
 public class GiftToGood {
     private Long giftToGoodId;
 
@@ -27,11 +20,106 @@ public class GiftToGood {
     private Long giftToGoodNumber;
 
     private String auditor;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime auditTime;
+
+    private Date auditTime;
 
     private String auditIdea;
 
     private String auditState;
 
+    public Long getGiftToGoodId() {
+        return giftToGoodId;
+    }
+
+    public void setGiftToGoodId(Long giftToGoodId) {
+        this.giftToGoodId = giftToGoodId;
+    }
+
+    public Long getGiftId() {
+        return giftId;
+    }
+
+    public void setGiftId(Long giftId) {
+        this.giftId = giftId;
+    }
+
+    public String getGiftName() {
+        return giftName;
+    }
+
+    public void setGiftName(String giftName) {
+        this.giftName = giftName == null ? null : giftName.trim();
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(String brandId) {
+        this.brandId = brandId == null ? null : brandId.trim();
+    }
+
+    public Double getGiftPrice() {
+        return giftPrice;
+    }
+
+    public void setGiftPrice(Double giftPrice) {
+        this.giftPrice = giftPrice;
+    }
+
+    public Double getGiftCost() {
+        return giftCost;
+    }
+
+    public void setGiftCost(Double giftCost) {
+        this.giftCost = giftCost;
+    }
+
+    public Long getGiftToGoodNumber() {
+        return giftToGoodNumber;
+    }
+
+    public void setGiftToGoodNumber(Long giftToGoodNumber) {
+        this.giftToGoodNumber = giftToGoodNumber;
+    }
+
+    public String getAuditor() {
+        return auditor;
+    }
+
+    public void setAuditor(String auditor) {
+        this.auditor = auditor == null ? null : auditor.trim();
+    }
+
+    public Date getAuditTime() {
+        return auditTime;
+    }
+
+    public void setAuditTime(Date auditTime) {
+        this.auditTime = auditTime;
+    }
+
+    public String getAuditIdea() {
+        return auditIdea;
+    }
+
+    public void setAuditIdea(String auditIdea) {
+        this.auditIdea = auditIdea == null ? null : auditIdea.trim();
+    }
+
+    public String getAuditState() {
+        return auditState;
+    }
+
+    public void setAuditState(String auditState) {
+        this.auditState = auditState == null ? null : auditState.trim();
+    }
 }

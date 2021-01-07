@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lirins.cn.mapper.GoodMapper">
-  <resultMap id="BaseResultMap" type="com.lirins.cn.entity.Good">
+<mapper namespace="com.lirins.cn.mapper.SaleOrderGoodMapper">
+  <resultMap id="BaseResultMap" type="com.lirins.cn.entity.SaleOrderGood">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="good_name" jdbcType="VARCHAR" property="goodName" />
-    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
-    <result column="brand_id" jdbcType="VARCHAR" property="brandId" />
+    <result column="good_id" jdbcType="BIGINT" property="goodId" />
+    <result column="good_amount" jdbcType="BIGINT" property="goodAmount" />
     <result column="good_price" jdbcType="DOUBLE" property="goodPrice" />
-    <result column="good_cost" jdbcType="DOUBLE" property="goodCost" />
-    <result column="good_number" jdbcType="BIGINT" property="goodNumber" />
-    <result column="good_state" jdbcType="CHAR" property="goodState" />
-    <result column="good_discount" jdbcType="DOUBLE" property="goodDiscount" />
-    <result column="good_gift" jdbcType="VARCHAR" property="goodGift" />
-    <result column=" good_img" jdbcType="VARCHAR" property="goodImg" />
+    <result column="receive_id" jdbcType="BIGINT" property="receiveId" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -77,16 +71,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, good_name, category_id, brand_id, good_price, good_cost, good_number, good_state, 
-    good_discount, good_gift, " good_img", add_time, creator_id, update_time, update_id
+    id, good_id, good_amount, good_price, receive_id, add_time, creator_id, update_time, 
+    update_id
   </sql>
-  <select id="selectByExample" parameterType="com.lirins.cn.entity.GoodExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.lirins.cn.entity.SaleOrderGoodExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_good
+    from t_sale_order_good
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -97,68 +91,46 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_good
+    from t_sale_order_good
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_good
+    delete from t_sale_order_good
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.lirins.cn.entity.GoodExample">
-    delete from t_good
+  <delete id="deleteByExample" parameterType="com.lirins.cn.entity.SaleOrderGoodExample">
+    delete from t_sale_order_good
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.lirins.cn.entity.Good">
-    insert into t_good (id, good_name, category_id, 
-      brand_id, good_price, good_cost, 
-      good_number, good_state, good_discount, 
-      good_gift, " good_img", add_time, 
+  <insert id="insert" parameterType="com.lirins.cn.entity.SaleOrderGood">
+    insert into t_sale_order_good (id, good_id, good_amount, 
+      good_price, receive_id, add_time, 
       creator_id, update_time, update_id
       )
-    values (#{id,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
-      #{brandId,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, #{goodCost,jdbcType=DOUBLE}, 
-      #{goodNumber,jdbcType=BIGINT}, #{goodState,jdbcType=CHAR}, #{goodDiscount,jdbcType=DOUBLE}, 
-      #{goodGift,jdbcType=VARCHAR}, #{goodImg,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT}, #{goodAmount,jdbcType=BIGINT}, 
+      #{goodPrice,jdbcType=DOUBLE}, #{receiveId,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, 
       #{creatorId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.lirins.cn.entity.Good">
-    insert into t_good
+  <insert id="insertSelective" parameterType="com.lirins.cn.entity.SaleOrderGood">
+    insert into t_sale_order_good
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="goodName != null">
-        good_name,
+      <if test="goodId != null">
+        good_id,
       </if>
-      <if test="categoryId != null">
-        category_id,
-      </if>
-      <if test="brandId != null">
-        brand_id,
+      <if test="goodAmount != null">
+        good_amount,
       </if>
       <if test="goodPrice != null">
         good_price,
       </if>
-      <if test="goodCost != null">
-        good_cost,
-      </if>
-      <if test="goodNumber != null">
-        good_number,
-      </if>
-      <if test="goodState != null">
-        good_state,
-      </if>
-      <if test="goodDiscount != null">
-        good_discount,
-      </if>
-      <if test="goodGift != null">
-        good_gift,
-      </if>
-      <if test="goodImg != null">
-        " good_img",
+      <if test="receiveId != null">
+        receive_id,
       </if>
       <if test="addTime != null">
         add_time,
@@ -177,35 +149,17 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="goodName != null">
-        #{goodName,jdbcType=VARCHAR},
+      <if test="goodId != null">
+        #{goodId,jdbcType=BIGINT},
       </if>
-      <if test="categoryId != null">
-        #{categoryId,jdbcType=BIGINT},
-      </if>
-      <if test="brandId != null">
-        #{brandId,jdbcType=VARCHAR},
+      <if test="goodAmount != null">
+        #{goodAmount,jdbcType=BIGINT},
       </if>
       <if test="goodPrice != null">
         #{goodPrice,jdbcType=DOUBLE},
       </if>
-      <if test="goodCost != null">
-        #{goodCost,jdbcType=DOUBLE},
-      </if>
-      <if test="goodNumber != null">
-        #{goodNumber,jdbcType=BIGINT},
-      </if>
-      <if test="goodState != null">
-        #{goodState,jdbcType=CHAR},
-      </if>
-      <if test="goodDiscount != null">
-        #{goodDiscount,jdbcType=DOUBLE},
-      </if>
-      <if test="goodGift != null">
-        #{goodGift,jdbcType=VARCHAR},
-      </if>
-      <if test="goodImg != null">
-        #{goodImg,jdbcType=VARCHAR},
+      <if test="receiveId != null">
+        #{receiveId,jdbcType=BIGINT},
       </if>
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
@@ -221,47 +175,29 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lirins.cn.entity.GoodExample" resultType="java.lang.Long">
-    select count(*) from t_good
+  <select id="countByExample" parameterType="com.lirins.cn.entity.SaleOrderGoodExample" resultType="java.lang.Long">
+    select count(*) from t_sale_order_good
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update t_good
+    update t_sale_order_good
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.goodName != null">
-        good_name = #{record.goodName,jdbcType=VARCHAR},
+      <if test="record.goodId != null">
+        good_id = #{record.goodId,jdbcType=BIGINT},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
-      </if>
-      <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=VARCHAR},
+      <if test="record.goodAmount != null">
+        good_amount = #{record.goodAmount,jdbcType=BIGINT},
       </if>
       <if test="record.goodPrice != null">
         good_price = #{record.goodPrice,jdbcType=DOUBLE},
       </if>
-      <if test="record.goodCost != null">
-        good_cost = #{record.goodCost,jdbcType=DOUBLE},
-      </if>
-      <if test="record.goodNumber != null">
-        good_number = #{record.goodNumber,jdbcType=BIGINT},
-      </if>
-      <if test="record.goodState != null">
-        good_state = #{record.goodState,jdbcType=CHAR},
-      </if>
-      <if test="record.goodDiscount != null">
-        good_discount = #{record.goodDiscount,jdbcType=DOUBLE},
-      </if>
-      <if test="record.goodGift != null">
-        good_gift = #{record.goodGift,jdbcType=VARCHAR},
-      </if>
-      <if test="record.goodImg != null">
-        " good_img" = #{record.goodImg,jdbcType=VARCHAR},
+      <if test="record.receiveId != null">
+        receive_id = #{record.receiveId,jdbcType=BIGINT},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -281,18 +217,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update t_good
+    update t_sale_order_good
     set id = #{record.id,jdbcType=BIGINT},
-      good_name = #{record.goodName,jdbcType=VARCHAR},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=VARCHAR},
+      good_id = #{record.goodId,jdbcType=BIGINT},
+      good_amount = #{record.goodAmount,jdbcType=BIGINT},
       good_price = #{record.goodPrice,jdbcType=DOUBLE},
-      good_cost = #{record.goodCost,jdbcType=DOUBLE},
-      good_number = #{record.goodNumber,jdbcType=BIGINT},
-      good_state = #{record.goodState,jdbcType=CHAR},
-      good_discount = #{record.goodDiscount,jdbcType=DOUBLE},
-      good_gift = #{record.goodGift,jdbcType=VARCHAR},
-      " good_img" = #{record.goodImg,jdbcType=VARCHAR},
+      receive_id = #{record.receiveId,jdbcType=BIGINT},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       creator_id = #{record.creatorId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -301,38 +231,20 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lirins.cn.entity.Good">
-    update t_good
+  <update id="updateByPrimaryKeySelective" parameterType="com.lirins.cn.entity.SaleOrderGood">
+    update t_sale_order_good
     <set>
-      <if test="goodName != null">
-        good_name = #{goodName,jdbcType=VARCHAR},
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=BIGINT},
       </if>
-      <if test="categoryId != null">
-        category_id = #{categoryId,jdbcType=BIGINT},
-      </if>
-      <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=VARCHAR},
+      <if test="goodAmount != null">
+        good_amount = #{goodAmount,jdbcType=BIGINT},
       </if>
       <if test="goodPrice != null">
         good_price = #{goodPrice,jdbcType=DOUBLE},
       </if>
-      <if test="goodCost != null">
-        good_cost = #{goodCost,jdbcType=DOUBLE},
-      </if>
-      <if test="goodNumber != null">
-        good_number = #{goodNumber,jdbcType=BIGINT},
-      </if>
-      <if test="goodState != null">
-        good_state = #{goodState,jdbcType=CHAR},
-      </if>
-      <if test="goodDiscount != null">
-        good_discount = #{goodDiscount,jdbcType=DOUBLE},
-      </if>
-      <if test="goodGift != null">
-        good_gift = #{goodGift,jdbcType=VARCHAR},
-      </if>
-      <if test="goodImg != null">
-        " good_img" = #{goodImg,jdbcType=VARCHAR},
+      <if test="receiveId != null">
+        receive_id = #{receiveId,jdbcType=BIGINT},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -349,18 +261,12 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lirins.cn.entity.Good">
-    update t_good
-    set good_name = #{goodName,jdbcType=VARCHAR},
-      category_id = #{categoryId,jdbcType=BIGINT},
-      brand_id = #{brandId,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.lirins.cn.entity.SaleOrderGood">
+    update t_sale_order_good
+    set good_id = #{goodId,jdbcType=BIGINT},
+      good_amount = #{goodAmount,jdbcType=BIGINT},
       good_price = #{goodPrice,jdbcType=DOUBLE},
-      good_cost = #{goodCost,jdbcType=DOUBLE},
-      good_number = #{goodNumber,jdbcType=BIGINT},
-      good_state = #{goodState,jdbcType=CHAR},
-      good_discount = #{goodDiscount,jdbcType=DOUBLE},
-      good_gift = #{goodGift,jdbcType=VARCHAR},
-      " good_img" = #{goodImg,jdbcType=VARCHAR},
+      receive_id = #{receiveId,jdbcType=BIGINT},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       creator_id = #{creatorId,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.11.242:3306/lirins?serverTimezone=UTC&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/lirins?serverTimezone=UTC&characterEncoding=utf-8
     username: root
     password: 123
 
