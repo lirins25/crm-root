@@ -12,7 +12,7 @@
     <result column="good_state" jdbcType="CHAR" property="goodState" />
     <result column="good_discount" jdbcType="DOUBLE" property="goodDiscount" />
     <result column="good_gift" jdbcType="VARCHAR" property="goodGift" />
-    <result column=" good_img" jdbcType="VARCHAR" property="goodImg" />
+    <result column="good_img" jdbcType="VARCHAR" property="goodImg" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, good_name, category_id, brand_id, good_price, good_cost, good_number, good_state, 
-    good_discount, good_gift, " good_img", add_time, creator_id, update_time, update_id
+    good_discount, good_gift, good_img, add_time, creator_id, update_time, update_id
   </sql>
   <select id="selectByExample" parameterType="com.lirins.cn.entity.GoodExample" resultMap="BaseResultMap">
     select
@@ -114,7 +114,7 @@
     insert into t_good (id, good_name, category_id, 
       brand_id, good_price, good_cost, 
       good_number, good_state, good_discount, 
-      good_gift, " good_img", add_time, 
+      good_gift, good_img, add_time, 
       creator_id, update_time, update_id
       )
     values (#{id,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
@@ -158,7 +158,7 @@
         good_gift,
       </if>
       <if test="goodImg != null">
-        " good_img",
+        good_img,
       </if>
       <if test="addTime != null">
         add_time,
@@ -261,7 +261,7 @@
         good_gift = #{record.goodGift,jdbcType=VARCHAR},
       </if>
       <if test="record.goodImg != null">
-        " good_img" = #{record.goodImg,jdbcType=VARCHAR},
+        good_img = #{record.goodImg,jdbcType=VARCHAR},
       </if>
       <if test="record.addTime != null">
         add_time = #{record.addTime,jdbcType=TIMESTAMP},
@@ -292,7 +292,7 @@
       good_state = #{record.goodState,jdbcType=CHAR},
       good_discount = #{record.goodDiscount,jdbcType=DOUBLE},
       good_gift = #{record.goodGift,jdbcType=VARCHAR},
-      " good_img" = #{record.goodImg,jdbcType=VARCHAR},
+      good_img = #{record.goodImg,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=TIMESTAMP},
       creator_id = #{record.creatorId,jdbcType=BIGINT},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -332,7 +332,7 @@
         good_gift = #{goodGift,jdbcType=VARCHAR},
       </if>
       <if test="goodImg != null">
-        " good_img" = #{goodImg,jdbcType=VARCHAR},
+        good_img = #{goodImg,jdbcType=VARCHAR},
       </if>
       <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
@@ -360,7 +360,7 @@
       good_state = #{goodState,jdbcType=CHAR},
       good_discount = #{goodDiscount,jdbcType=DOUBLE},
       good_gift = #{goodGift,jdbcType=VARCHAR},
-      " good_img" = #{goodImg,jdbcType=VARCHAR},
+      good_img = #{goodImg,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=TIMESTAMP},
       creator_id = #{creatorId,jdbcType=BIGINT},
       update_time = #{updateTime,jdbcType=TIMESTAMP},

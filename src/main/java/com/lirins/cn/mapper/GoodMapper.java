@@ -1,31 +1,9 @@
 package com.lirins.cn.mapper;
 
 import com.lirins.cn.entity.Good;
-import com.lirins.cn.entity.GoodExample;
-import org.apache.ibatis.annotations.Param;
+import com.lirins.cn.mapper.base.BaseMapper;
 
-import java.util.List;
 
-public interface GoodMapper {
-    long countByExample(GoodExample example);
+public interface GoodMapper extends BaseMapper<Good,Long> {
 
-    int deleteByExample(GoodExample example);
-
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Good record);
-
-    int insertSelective(Good record);
-
-    List<Good> selectByExample(GoodExample example);
-
-    Good selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("record") Good record, @Param("example") GoodExample example);
-
-    int updateByExample(@Param("record") Good record, @Param("example") GoodExample example);
-
-    int updateByPrimaryKeySelective(Good record);
-
-    int updateByPrimaryKey(Good record);
 }

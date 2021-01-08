@@ -746,72 +746,72 @@ public class GoodExample {
         }
 
         public Criteria andGoodImgIsNull() {
-            addCriterion("\" good_img\" is null");
+            addCriterion("good_img is null");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgIsNotNull() {
-            addCriterion("\" good_img\" is not null");
+            addCriterion("good_img is not null");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgEqualTo(String value) {
-            addCriterion("\" good_img\" =", value, "goodImg");
+            addCriterion("good_img =", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgNotEqualTo(String value) {
-            addCriterion("\" good_img\" <>", value, "goodImg");
+            addCriterion("good_img <>", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgGreaterThan(String value) {
-            addCriterion("\" good_img\" >", value, "goodImg");
+            addCriterion("good_img >", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgGreaterThanOrEqualTo(String value) {
-            addCriterion("\" good_img\" >=", value, "goodImg");
+            addCriterion("good_img >=", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgLessThan(String value) {
-            addCriterion("\" good_img\" <", value, "goodImg");
+            addCriterion("good_img <", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgLessThanOrEqualTo(String value) {
-            addCriterion("\" good_img\" <=", value, "goodImg");
+            addCriterion("good_img <=", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgLike(String value) {
-            addCriterion("\" good_img\" like", value, "goodImg");
+            addCriterion("good_img like", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgNotLike(String value) {
-            addCriterion("\" good_img\" not like", value, "goodImg");
+            addCriterion("good_img not like", value, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgIn(List<String> values) {
-            addCriterion("\" good_img\" in", values, "goodImg");
+            addCriterion("good_img in", values, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgNotIn(List<String> values) {
-            addCriterion("\" good_img\" not in", values, "goodImg");
+            addCriterion("good_img not in", values, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgBetween(String value1, String value2) {
-            addCriterion("\" good_img\" between", value1, value2, "goodImg");
+            addCriterion("good_img between", value1, value2, "goodImg");
             return (Criteria) this;
         }
 
         public Criteria andGoodImgNotBetween(String value1, String value2) {
-            addCriterion("\" good_img\" not between", value1, value2, "goodImg");
+            addCriterion("good_img not between", value1, value2, "goodImg");
             return (Criteria) this;
         }
 
