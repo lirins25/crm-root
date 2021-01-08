@@ -16,6 +16,19 @@
     <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <association property="orderGoods" resultMap="orderGoodMap"/>
+  </resultMap>
+<!--  联查使用-->
+  <resultMap id="orderGoodMap" type="com.lirins.cn.entity.SaleOrderGood">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="good_id" jdbcType="BIGINT" property="goodId" />
+    <result column="good_amount" jdbcType="BIGINT" property="goodAmount" />
+    <result column="good_price" jdbcType="DOUBLE" property="goodPrice" />
+    <result column="receive_id" jdbcType="BIGINT" property="receiveId" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,6 +88,31 @@
       </foreach>
     </where>
   </sql>
+<!--  联查专用-->
+  <sql id="Base_Column_List_With_OrderGood">
+    id, order_type, booking_time, order_motion, business_type, user_account, consignee_id,
+    order_payer, order_payment, order_state, add_time, creator_id, update_time, update_id,
+    id, good_id, good_amount, good_price, receive_id, add_time, creator_id, update_time,
+    update_id
+  </sql>
+  <select id="selectByExampleWithOrderGood" parameterType="com.lirins.cn.entity.SaleOrderReceiveExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List_With_OrderGood" />
+    from t_sale_order_receive t1
+    join t_sale_order_good t2 on t2.receive_id=t1.id
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+<!--  联查-->
+
+
   <sql id="Base_Column_List">
     id, order_type, booking_time, order_motion, business_type, user_account, consignee_id, 
     order_payer, order_payment, order_state, add_time, creator_id, update_time, update_id

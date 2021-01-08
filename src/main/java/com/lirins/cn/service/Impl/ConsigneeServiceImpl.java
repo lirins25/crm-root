@@ -1,9 +1,11 @@
 package com.lirins.cn.service.Impl;
 
 import com.lirins.cn.entity.Consignee;
-import com.lirins.cn.mapper.ConsigneeMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lirins.cn.service.ConsigneeService;
+import com.lirins.cn.service.base.Impl.BaseServiceImpl;
+import com.lirins.cn.vo.PageVo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,11 +17,7 @@ import java.util.List;
  * @since JDK 1.8
  */
 @Service
-public class ConsigneeServiceImpl {
-    @Autowired
-    private ConsigneeMapper mapper;
+@Transactional
+public class ConsigneeServiceImpl extends BaseServiceImpl<Consignee,Long> implements ConsigneeService {
 
-    public List<Consignee> findAll(){
-        return mapper.selectByExample(null);
-    }
 }
