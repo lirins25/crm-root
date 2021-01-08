@@ -51,4 +51,10 @@ public interface BaseService<T,ID> {
     int batchDeleteByIds(List<ID> ids);
 
     PageVo<T> setPageVo(List<T> list);
+
+    /**
+     *
+     *多表操作封装pageVo数据
+     */
+    PageVo<T> setPageVoWithMultilist(List<T> list);
 }
