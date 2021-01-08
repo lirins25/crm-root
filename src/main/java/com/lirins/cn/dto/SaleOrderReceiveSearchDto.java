@@ -9,6 +9,7 @@ import lombok.Data;
  * @date: 2021/1/8
  * @since JDK 1.8
  */
+
 @Data
 public class SaleOrderReceiveSearchDto {
     //订单类型
