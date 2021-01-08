@@ -5,6 +5,7 @@ import com.lirins.cn.mapper.base.BaseMapper;
 import com.lirins.cn.service.base.BaseService;
 import com.lirins.cn.utils.ReflectionUtils;
 import com.lirins.cn.vo.PageVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * @date: 2021/1/4
  * @since JDK 1.8
  */
+@Slf4j
 public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
     @Autowired
     private BaseMapper<T,ID> baseMapper;
@@ -96,6 +98,15 @@ public class BaseServiceImpl<T,ID> implements BaseService<T,ID> {
         PageVo<T> pageVo = new PageVo<>();
         pageVo.setList(list);
         pageVo.setTotal(total);
+        return pageVo;
+    }
+
+    @Override
+    public PageVo<T> setPageVoWithMultilist(List<T> list) {
+        PageVo<T> pageVo = new PageVo<>();
+        pageVo.setList(list);
+        pageVo.setTotal(list.size());
+        log.info("联查数据条数为："+list.size());
         return pageVo;
     }
 }

@@ -1,5 +1,6 @@
 package com.lirins.cn.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lirins.cn.entity.base.BaseEntity;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ public class SaleOrderReceive extends BaseEntity<Long> {
 
     private String orderType;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date bookingTime;
 
     private String orderMotion;
