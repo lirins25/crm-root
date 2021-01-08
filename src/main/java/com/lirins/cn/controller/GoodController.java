@@ -5,18 +5,22 @@ import com.lirins.cn.common.http.AxiosResult;
 import com.lirins.cn.controller.base.BaseController;
 import com.lirins.cn.entity.Good;
 import com.lirins.cn.service.GoodService;
+import com.lirins.cn.utils.UploadService;
 import com.lirins.cn.vo.PageVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("good")
-public class GoodController extends BaseController<Good,Long> {
+public class GoodController extends BaseController<Good, Long> {
     @Autowired
     private GoodService goodService;
+
 
     @GetMapping
     public AxiosResult<PageVo<Good>> findPage(@RequestParam(defaultValue = "1") int currentPage
@@ -49,4 +53,16 @@ public class GoodController extends BaseController<Good,Long> {
         int i = goodService.batchDeleteByIds(ids);
         return toAxios(i);
     }
+
+    /**
+     * 将文件上传到阿里云 同时返回图片地址给前端
+     */
+    @PostMapping("upload")
+    public AxiosResult<String> upload(HttpServletRequest request) {
+        String upload = goodService.upload(request);
+        System.out.println(upload);
+        return AxiosResult.success(upload);
+    }
+
+
 }

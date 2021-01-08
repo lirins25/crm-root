@@ -1,8 +1,11 @@
 package com.lirins.cn.config;
 
 import org.springframework.context.annotation.Configuration;
+
+
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 /**
  * @version 0.1
@@ -20,5 +23,8 @@ public class MVCConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowedOrigins("*");
-    }
-}
+
+    }}
+
+
+

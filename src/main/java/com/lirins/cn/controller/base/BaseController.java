@@ -14,8 +14,6 @@ public class BaseController<T,ID> {
      *
      * 弊端：只能单表操作
      */
-
-
     public AxiosResult<Void> toAxios(int row) {
         return row > 0 ? AxiosResult.success() : AxiosResult.error();
     }

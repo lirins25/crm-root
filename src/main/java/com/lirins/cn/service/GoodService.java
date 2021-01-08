@@ -1,8 +1,11 @@
 package com.lirins.cn.service;
 
+import com.lirins.cn.common.http.AxiosResult;
 import com.lirins.cn.entity.Brand;
 import com.lirins.cn.entity.Good;
 import com.lirins.cn.service.base.BaseService;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @version 0.1
@@ -12,4 +15,5 @@ import com.lirins.cn.service.base.BaseService;
  * @since JDK 1.8
  */
 public interface GoodService extends BaseService<Good,Long> {
+    String upload(HttpServletRequest request);
 }

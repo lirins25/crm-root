@@ -4,6 +4,12 @@ spring:
     url: jdbc:mysql://192.168.11.242/lirins?serverTimezone=UTC&characterEncoding=utf-8
     username: root
     password: 123
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
+
 
 ##加载配置文件
 mybatis:
@@ -12,3 +18,4 @@ mybatis:
     map-underscore-to-camel-case: true
 server:
   port: 8001
+
