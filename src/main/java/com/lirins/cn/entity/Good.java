@@ -7,11 +7,12 @@ import java.util.Date;
 @Data
 public class Good  extends BaseEntity<Long> {
 
+
     private String goodName;
 
-    private Long categoryId;
+    private String categoryName;
 
-    private String brandId;
+    private String brandName;
 
     private Double goodPrice;
 

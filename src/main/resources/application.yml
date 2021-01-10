@@ -10,7 +10,6 @@ spring:
       max-file-size: 30MB
       max-request-size: 30MB
 
-
 ##加载配置文件
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -18,4 +17,8 @@ mybatis:
     map-underscore-to-camel-case: true
 server:
   port: 8001
+#  设置日志级别 打印mapper层的语句
+logging:
+  level:
+    com.lirins.cn.mapper: debug
 

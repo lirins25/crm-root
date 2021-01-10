@@ -6,15 +6,15 @@ import java.util.Date;
 
 @Data
 public class GoodToGift {
-    private Long goodToGiftId;
+    private Long id;
 
     private Long goodId;
 
     private String goodName;
 
-    private Long categoryId;
+    private String categoryName;
 
-    private String brandId;
+    private String brandName;
 
     private Double goodPrice;
 

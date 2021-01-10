@@ -3,6 +3,7 @@ package com.lirins.cn.controller;
 import com.github.pagehelper.PageHelper;
 import com.lirins.cn.common.http.AxiosResult;
 import com.lirins.cn.controller.base.BaseController;
+import com.lirins.cn.entity.Brand;
 import com.lirins.cn.entity.Category;
 import com.lirins.cn.entity.Category;
 import com.lirins.cn.service.CategoryService;
@@ -63,5 +64,16 @@ public class CategoryController extends BaseController<Category,Long> {
     public AxiosResult<Void> deleteEntity(@PathVariable List<Long> ids) {
         int i = categoryService.batchDeleteByIds(ids);
         return toAxios(i);
+    }
+
+    /**
+     * 查询全部数据 不带分页
+     * @return
+     */
+    @GetMapping("findAllWithoutPage")
+    public AxiosResult<List<Category>> findAllWithoutPage() {
+        PageVo<Category> page = categoryService.findPage();
+        List<Category> list = page.getList();
+        return AxiosResult.success(list);
     }
 }

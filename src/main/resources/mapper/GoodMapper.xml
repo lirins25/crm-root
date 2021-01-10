@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.lirins.cn.entity.Good">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="good_name" jdbcType="VARCHAR" property="goodName" />
-    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
-    <result column="brand_id" jdbcType="VARCHAR" property="brandId" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
     <result column="good_price" jdbcType="DOUBLE" property="goodPrice" />
     <result column="good_cost" jdbcType="DOUBLE" property="goodCost" />
     <result column="good_number" jdbcType="BIGINT" property="goodNumber" />
@@ -77,7 +77,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, good_name, category_id, brand_id, good_price, good_cost, good_number, good_state, 
+    id, good_name, category_name, brand_name, good_price, good_cost, good_number, good_state, 
     good_discount, good_gift, good_img, add_time, creator_id, update_time, update_id
   </sql>
   <select id="selectByExample" parameterType="com.lirins.cn.entity.GoodExample" resultMap="BaseResultMap">
@@ -111,14 +111,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lirins.cn.entity.Good">
-    insert into t_good (id, good_name, category_id, 
-      brand_id, good_price, good_cost, 
+    insert into t_good (id, good_name, category_name, 
+      brand_name, good_price, good_cost, 
       good_number, good_state, good_discount, 
       good_gift, good_img, add_time, 
       creator_id, update_time, update_id
       )
-    values (#{id,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
-      #{brandId,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, #{goodCost,jdbcType=DOUBLE}, 
+    values (#{id,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, #{categoryName,jdbcType=VARCHAR}, 
+      #{brandName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, #{goodCost,jdbcType=DOUBLE}, 
       #{goodNumber,jdbcType=BIGINT}, #{goodState,jdbcType=CHAR}, #{goodDiscount,jdbcType=DOUBLE}, 
       #{goodGift,jdbcType=VARCHAR}, #{goodImg,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, 
       #{creatorId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
@@ -133,11 +133,11 @@
       <if test="goodName != null">
         good_name,
       </if>
-      <if test="categoryId != null">
-        category_id,
+      <if test="categoryName != null">
+        category_name,
       </if>
-      <if test="brandId != null">
-        brand_id,
+      <if test="brandName != null">
+        brand_name,
       </if>
       <if test="goodPrice != null">
         good_price,
@@ -180,11 +180,11 @@
       <if test="goodName != null">
         #{goodName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryId != null">
-        #{categoryId,jdbcType=BIGINT},
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        #{brandId,jdbcType=VARCHAR},
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
         #{goodPrice,jdbcType=DOUBLE},
@@ -236,11 +236,11 @@
       <if test="record.goodName != null">
         good_name = #{record.goodName,jdbcType=VARCHAR},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
+      <if test="record.categoryName != null">
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=VARCHAR},
+      <if test="record.brandName != null">
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
       </if>
       <if test="record.goodPrice != null">
         good_price = #{record.goodPrice,jdbcType=DOUBLE},
@@ -284,8 +284,8 @@
     update t_good
     set id = #{record.id,jdbcType=BIGINT},
       good_name = #{record.goodName,jdbcType=VARCHAR},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=VARCHAR},
+      category_name = #{record.categoryName,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
       good_price = #{record.goodPrice,jdbcType=DOUBLE},
       good_cost = #{record.goodCost,jdbcType=DOUBLE},
       good_number = #{record.goodNumber,jdbcType=BIGINT},
@@ -307,11 +307,11 @@
       <if test="goodName != null">
         good_name = #{goodName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryId != null">
-        category_id = #{categoryId,jdbcType=BIGINT},
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=VARCHAR},
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
         good_price = #{goodPrice,jdbcType=DOUBLE},
@@ -352,8 +352,8 @@
   <update id="updateByPrimaryKey" parameterType="com.lirins.cn.entity.Good">
     update t_good
     set good_name = #{goodName,jdbcType=VARCHAR},
-      category_id = #{categoryId,jdbcType=BIGINT},
-      brand_id = #{brandId,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
       good_price = #{goodPrice,jdbcType=DOUBLE},
       good_cost = #{goodCost,jdbcType=DOUBLE},
       good_number = #{goodNumber,jdbcType=BIGINT},

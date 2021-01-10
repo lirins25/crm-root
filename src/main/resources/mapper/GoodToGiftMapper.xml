@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lirins.cn.mapper.GoodToGiftMapper">
   <resultMap id="BaseResultMap" type="com.lirins.cn.entity.GoodToGift">
-    <id column="good_to_gift_id" jdbcType="BIGINT" property="goodToGiftId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="good_id" jdbcType="BIGINT" property="goodId" />
     <result column="good_name" jdbcType="VARCHAR" property="goodName" />
-    <result column="category_id" jdbcType="BIGINT" property="categoryId" />
-    <result column="brand_id" jdbcType="VARCHAR" property="brandId" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
     <result column="good_price" jdbcType="DOUBLE" property="goodPrice" />
     <result column="good_cost" jdbcType="DOUBLE" property="goodCost" />
     <result column="good_to_gift_number" jdbcType="BIGINT" property="goodToGiftNumber" />
     <result column="auditor" jdbcType="VARCHAR" property="auditor" />
     <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
     <result column="audit_idea" jdbcType="VARCHAR" property="auditIdea" />
-    <result column="audit_state" jdbcType="VARCHAR" property="auditState" />
+    <result column="audit_state" jdbcType="CHAR" property="auditState" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    good_to_gift_id, good_id, good_name, category_id, brand_id, good_price, good_cost, 
-    good_to_gift_number, auditor, audit_time, audit_idea, audit_state
+    id, good_id, good_name, category_name, brand_name, good_price, good_cost, good_to_gift_number, 
+    auditor, audit_time, audit_idea, audit_state
   </sql>
   <select id="selectByExample" parameterType="com.lirins.cn.entity.GoodToGiftExample" resultMap="BaseResultMap">
     select
@@ -95,11 +95,11 @@
     select 
     <include refid="Base_Column_List" />
     from t_good_to_gift
-    where good_to_gift_id = #{goodToGiftId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_good_to_gift
-    where good_to_gift_id = #{goodToGiftId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.lirins.cn.entity.GoodToGiftExample">
     delete from t_good_to_gift
@@ -108,22 +108,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lirins.cn.entity.GoodToGift">
-    insert into t_good_to_gift (good_to_gift_id, good_id, good_name, 
-      category_id, brand_id, good_price, 
+    insert into t_good_to_gift (id, good_id, good_name, 
+      category_name, brand_name, good_price, 
       good_cost, good_to_gift_number, auditor, 
       audit_time, audit_idea, audit_state
       )
-    values (#{goodToGiftId,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, 
-      #{categoryId,jdbcType=BIGINT}, #{brandId,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, 
+    values (#{id,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR}, 
+      #{categoryName,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, #{goodPrice,jdbcType=DOUBLE}, 
       #{goodCost,jdbcType=DOUBLE}, #{goodToGiftNumber,jdbcType=BIGINT}, #{auditor,jdbcType=VARCHAR}, 
-      #{auditTime,jdbcType=TIMESTAMP}, #{auditIdea,jdbcType=VARCHAR}, #{auditState,jdbcType=VARCHAR}
+      #{auditTime,jdbcType=TIMESTAMP}, #{auditIdea,jdbcType=VARCHAR}, #{auditState,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lirins.cn.entity.GoodToGift">
     insert into t_good_to_gift
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="goodToGiftId != null">
-        good_to_gift_id,
+      <if test="id != null">
+        id,
       </if>
       <if test="goodId != null">
         good_id,
@@ -131,11 +131,11 @@
       <if test="goodName != null">
         good_name,
       </if>
-      <if test="categoryId != null">
-        category_id,
+      <if test="categoryName != null">
+        category_name,
       </if>
-      <if test="brandId != null">
-        brand_id,
+      <if test="brandName != null">
+        brand_name,
       </if>
       <if test="goodPrice != null">
         good_price,
@@ -160,8 +160,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="goodToGiftId != null">
-        #{goodToGiftId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="goodId != null">
         #{goodId,jdbcType=BIGINT},
@@ -169,11 +169,11 @@
       <if test="goodName != null">
         #{goodName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryId != null">
-        #{categoryId,jdbcType=BIGINT},
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        #{brandId,jdbcType=VARCHAR},
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
         #{goodPrice,jdbcType=DOUBLE},
@@ -194,7 +194,7 @@
         #{auditIdea,jdbcType=VARCHAR},
       </if>
       <if test="auditState != null">
-        #{auditState,jdbcType=VARCHAR},
+        #{auditState,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -207,8 +207,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update t_good_to_gift
     <set>
-      <if test="record.goodToGiftId != null">
-        good_to_gift_id = #{record.goodToGiftId,jdbcType=BIGINT},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.goodId != null">
         good_id = #{record.goodId,jdbcType=BIGINT},
@@ -216,11 +216,11 @@
       <if test="record.goodName != null">
         good_name = #{record.goodName,jdbcType=VARCHAR},
       </if>
-      <if test="record.categoryId != null">
-        category_id = #{record.categoryId,jdbcType=BIGINT},
+      <if test="record.categoryName != null">
+        category_name = #{record.categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=VARCHAR},
+      <if test="record.brandName != null">
+        brand_name = #{record.brandName,jdbcType=VARCHAR},
       </if>
       <if test="record.goodPrice != null">
         good_price = #{record.goodPrice,jdbcType=DOUBLE},
@@ -241,7 +241,7 @@
         audit_idea = #{record.auditIdea,jdbcType=VARCHAR},
       </if>
       <if test="record.auditState != null">
-        audit_state = #{record.auditState,jdbcType=VARCHAR},
+        audit_state = #{record.auditState,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -250,18 +250,18 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update t_good_to_gift
-    set good_to_gift_id = #{record.goodToGiftId,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=BIGINT},
       good_id = #{record.goodId,jdbcType=BIGINT},
       good_name = #{record.goodName,jdbcType=VARCHAR},
-      category_id = #{record.categoryId,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=VARCHAR},
+      category_name = #{record.categoryName,jdbcType=VARCHAR},
+      brand_name = #{record.brandName,jdbcType=VARCHAR},
       good_price = #{record.goodPrice,jdbcType=DOUBLE},
       good_cost = #{record.goodCost,jdbcType=DOUBLE},
       good_to_gift_number = #{record.goodToGiftNumber,jdbcType=BIGINT},
       auditor = #{record.auditor,jdbcType=VARCHAR},
       audit_time = #{record.auditTime,jdbcType=TIMESTAMP},
       audit_idea = #{record.auditIdea,jdbcType=VARCHAR},
-      audit_state = #{record.auditState,jdbcType=VARCHAR}
+      audit_state = #{record.auditState,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -275,11 +275,11 @@
       <if test="goodName != null">
         good_name = #{goodName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryId != null">
-        category_id = #{categoryId,jdbcType=BIGINT},
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=VARCHAR},
+      <if test="brandName != null">
+        brand_name = #{brandName,jdbcType=VARCHAR},
       </if>
       <if test="goodPrice != null">
         good_price = #{goodPrice,jdbcType=DOUBLE},
@@ -300,24 +300,24 @@
         audit_idea = #{auditIdea,jdbcType=VARCHAR},
       </if>
       <if test="auditState != null">
-        audit_state = #{auditState,jdbcType=VARCHAR},
+        audit_state = #{auditState,jdbcType=CHAR},
       </if>
     </set>
-    where good_to_gift_id = #{goodToGiftId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lirins.cn.entity.GoodToGift">
     update t_good_to_gift
     set good_id = #{goodId,jdbcType=BIGINT},
       good_name = #{goodName,jdbcType=VARCHAR},
-      category_id = #{categoryId,jdbcType=BIGINT},
-      brand_id = #{brandId,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
       good_price = #{goodPrice,jdbcType=DOUBLE},
       good_cost = #{goodCost,jdbcType=DOUBLE},
       good_to_gift_number = #{goodToGiftNumber,jdbcType=BIGINT},
       auditor = #{auditor,jdbcType=VARCHAR},
       audit_time = #{auditTime,jdbcType=TIMESTAMP},
       audit_idea = #{auditIdea,jdbcType=VARCHAR},
-      audit_state = #{auditState,jdbcType=VARCHAR}
-    where good_to_gift_id = #{goodToGiftId,jdbcType=BIGINT}
+      audit_state = #{auditState,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

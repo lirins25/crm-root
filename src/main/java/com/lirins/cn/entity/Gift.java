@@ -4,14 +4,15 @@ import com.lirins.cn.entity.base.BaseEntity;
 import lombok.Data;
 
 
+
 @Data
-public class Gift extends BaseEntity<Long> {
+public class Gift  extends BaseEntity<Long> {
 
     private String goodName;
 
-    private Long categoryId;
+    private String categoryName;
 
-    private String brandId;
+    private String brandName;
 
     private Double goodPrice;
 
@@ -20,5 +21,11 @@ public class Gift extends BaseEntity<Long> {
     private Double goodCost;
 
     private String giftState;
+
+    private String goodImg;
+
+    private Long toGoodId;
+
+    private String toGoodName;
 
 }
